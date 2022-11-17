@@ -1,0 +1,14 @@
+Hashmap:
+Test1 : 428
+Test2 : 443
+Test3 : 513
+
+med 443 ms
+
+Treemap:
+t1: 438
+t2: 404.66
+t3: 522.9
+
+med 438 ms
+
