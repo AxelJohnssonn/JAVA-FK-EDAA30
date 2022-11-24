@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -46,9 +47,13 @@ public class BookReaderController {
         JButton b2 = new JButton("Frequency");*/
 
         //V4 
+        ButtonGroup taken = new ButtonGroup();
         JRadioButton b1 = new JRadioButton("Alphabetic");
         JRadioButton b2 = new JRadioButton("Frequency");
-            
+        
+        taken.add(b1);
+        taken.add(b2);
+
         b1.setSelected(true);
         
         buttonPanel.add(b1);
@@ -92,8 +97,7 @@ public class BookReaderController {
         });*/
 
         //v3
-        ActionListener actionListener = new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
+        ActionListener actionListener = e -> {
                
                     String search = searchField.getText().toLowerCase().trim();
                     boolean found = false;
@@ -108,7 +112,6 @@ public class BookReaderController {
                     if(!found){
                         d.showMessageDialog(null, search + " hittades inte. Försök igen", "Word not found", d.ERROR_MESSAGE);
                     }
-                }
             };
 
             searchButton.addActionListener(actionListener);
