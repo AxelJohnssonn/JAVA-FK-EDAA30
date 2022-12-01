@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "experimental_vscode_workspace_v1/lab4/lib/junit-platform-console-standalone-1.9.0.jar"
+        "experimental_vscode_workspace_v1/lab4/lib/junit-platform-console-standalone-1.9.0.jar",
+        "experimental_vscode_workspace_v1/lab6/lib/junit-platform-console-standalone-1.9.0.jar"
     ]
 }
