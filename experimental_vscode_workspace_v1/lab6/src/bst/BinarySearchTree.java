@@ -8,6 +8,27 @@ public class BinarySearchTree<E> {
   BinaryNode<E> root;  // Används också i BSTVisaulizer
   int size;            // Används också i BSTVisaulizer
   private Comparator<E> ccomparator;
+
+  public static void main(String[] args) {
+	BSTVisualizer visualizer = new BSTVisualizer("Binary tree", 500, 500);
+	BinarySearchTree<Integer> binaryTree = new BinarySearchTree<Integer>(); 
+	for (int i = 11; i > 0; i--){
+		binaryTree.add(i);
+	}
+
+	binaryTree.add(50);
+	binaryTree.add(34);
+	binaryTree.add(22);
+	binaryTree.add(13);
+	binaryTree.add(16);
+	binaryTree.add(18);
+
+	binaryTree.rebuild();
+	visualizer.drawTree(binaryTree);
+	binaryTree.printTree();
+	System.out.println(binaryTree.height());
+}
+
 	/**
 	 * Constructs an empty binary search tree.
 	 */
@@ -71,7 +92,7 @@ public class BinarySearchTree<E> {
 	}
 
 	private int recursiveH(BinaryNode<E> node){
-		if(node.left == null && node.right == null){
+		if(node == null){
 			return 0;
 		}else{
 			return 1 + Math.max(recursiveH(node.left), recursiveH(node.right)); 
@@ -112,14 +133,20 @@ public class BinarySearchTree<E> {
 	 * Builds a complete tree from the elements in the tree.
 	 */
 	public void rebuild() {
-
+		ArrayList<E> list = new ArrayList<E>();
+		toArray(root, list);
+		root = buildTree(list, 0, list.size()-1);
 	}
 	
 	/*
 	 * Adds all elements from the tree rooted at n in inorder to the list sorted.
 	 */
 	private void toArray(BinaryNode<E> n, ArrayList<E> sorted) {
-	
+		if(n != null){
+			toArray(n.left, sorted);
+			sorted.add(n.element);
+			toArray(n.right, sorted);
+		}
 	}
 	
 	/*
@@ -129,7 +156,17 @@ public class BinarySearchTree<E> {
 	 * Returns the root of tree.
 	 */
 	private BinaryNode<E> buildTree(ArrayList<E> sorted, int first, int last) {
-		return null; 
+		if(first > last){
+			return null;
+		}else{
+			int mid = first + ((last-first)/2);
+			BinaryNode<E> node = new BinaryNode<E>(sorted.get(mid));
+			node.left = buildTree(sorted, first, mid-1);
+			node.right = buildTree(sorted, mid+1, last);
+			return node; 
+		}
+
+
 	}
 
 	static class BinaryNode<E> {
