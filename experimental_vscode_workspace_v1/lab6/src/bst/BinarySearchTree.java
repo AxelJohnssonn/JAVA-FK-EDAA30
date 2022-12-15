@@ -12,17 +12,17 @@ public class BinarySearchTree<E> {
   public static void main(String[] args) {
 	BSTVisualizer visualizer = new BSTVisualizer("Binary tree", 500, 500);
 	BinarySearchTree<Integer> binaryTree = new BinarySearchTree<Integer>(); 
-	for (int i = 11; i > 0; i--){
+	for (int i =0; i < 20; i++){
 		binaryTree.add(i);
 	}
 
-	binaryTree.add(50);
+	/*binaryTree.add(50);
 	binaryTree.add(34);
 	binaryTree.add(22);
 	binaryTree.add(13);
 	binaryTree.add(16);
 	binaryTree.add(18);
-
+*/
 	binaryTree.rebuild();
 	visualizer.drawTree(binaryTree);
 	binaryTree.printTree();
